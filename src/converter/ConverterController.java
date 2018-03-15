@@ -58,7 +58,7 @@ public class ConverterController {
 				textfield2.setText("Please input number!!");
 				textfield2.setStyle("-fx-text-inner-color: red;");
 			}
-			Double result = Double.parseDouble(text)*(unit2.getValue()/unit1.getValue());
+			Double result = Double.parseDouble(text)*(unit1.getValue()/unit2.getValue());
 			textfield2.setText(String.format("%.4g",result));
 		}
 		
@@ -69,7 +69,7 @@ public class ConverterController {
 					textfield.setText("Please input number!!");
 					textfield.setStyle("-fx-text-inner-color: red;");
 			}
-			Double result2 = Double.parseDouble(text2)*(unit1.getValue())/unit2.getValue();
+			Double result2 = Double.parseDouble(text2)*(unit2.getValue())/unit1.getValue();
 			textfield.setText(String.format("%.4g",result2));
 		}
 		

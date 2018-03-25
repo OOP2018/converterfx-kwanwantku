@@ -53,23 +53,27 @@ public class ConverterController {
 		Length unit2 = combobox2.getValue();
 		//perform the conversion and output result from unit 1 to unit 2
 		if(text.length() > 0) {
-			//if user did not type something then show an error message
-			if ( !(text.matches("\\d+")) ) {
+			Double result = 0.0;
+			try {
+				result = Double.parseDouble(text)*(unit1.getValue()/unit2.getValue());
+			} catch (Exception ex) {
+				//if user did not type something then show an error message
 				textfield2.setText("Please input number!!");
 				textfield2.setStyle("-fx-text-inner-color: red;");
 			}
-			Double result = Double.parseDouble(text)*(unit1.getValue()/unit2.getValue());
 			textfield2.setText(String.format("%.4g",result));
 		}
 		
-		///perform the conversion and output result from kilometer to miles
+		//perform the conversion and output result from kilometer to miles
 		if(text2.length() >0) {
-			//if user did not type something then show an error message
-			 if (!(text2.matches("\\d+")) ) {
-					textfield.setText("Please input number!!");
-					textfield.setStyle("-fx-text-inner-color: red;");
+			Double result2 = 0.0;
+			try {
+				result2 = Double.parseDouble(text2)*(unit2.getValue())/unit1.getValue();
+			} catch (Exception ex) {
+				//if user did not type something then show an error message
+				textfield.setText("Please input number!!");
+				textfield.setStyle("-fx-text-inner-color: red;");
 			}
-			Double result2 = Double.parseDouble(text2)*(unit2.getValue())/unit1.getValue();
 			textfield.setText(String.format("%.4g",result2));
 		}
 		
@@ -82,5 +86,6 @@ public class ConverterController {
 	public void handleClear(ActionEvent event) {
 		textfield.clear();
 		textfield2.clear();
+		textfield2.setStyle("-fx-text-inner-color: black;");
 	}
 }
